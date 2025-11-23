@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
@@ -13,10 +13,79 @@
 
   <p id="leiras">Leírás: Nem tom mi még a leírás mert tesztben van ;)</p>
 
-  <button onclick="alert('Szia! Ez egy működő gomb 😎')">
+  <button onclick="alert('Szia! Ez egy működő gomb😵')">
     Kattints rám!
   </button>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fun gomb példa</title>
+  
+  <style>
+    button {
+      background: linear-gradient(45deg, #000000, #111111);
+      color: white;
+      padding: 15px 32px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      margin: 10px;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #0a0a30, #000066);
+      transform: scale(1.05);
+    }
+
+    button:active {
+      background: linear-gradient(45deg, #000033, #000099);
+      transform: scale(1.2) translateY(-5px) rotate(-5deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    #fun-buttons {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <
+  <button id="fun-btn">Fun</button>
+
+  <!-- Itt jönnek a fun gombok -->
+  <div id="fun-buttons"></div>
+
+  <script>
+    const funBtn = document.getElementById('fun-btn');
+    const funButtonsDiv = document.getElementById('fun-buttons');
+
+    funBtn.addEventListener('click', () => {
+      // Ha már létrehoztuk, ne csináljunk újat
+      if(funButtonsDiv.innerHTML !== '') return;
+
+      // Video Games gomb
+      const videoBtn = document.createElement('button');
+      videoBtn.innerText = 'Video Games';
+      videoBtn.onclick = () => {
+        window.location.href = 'https://www.roblox.com/';
+      }
+
+      // Teszt gomb
+      const testBtn = document.createElement('button');
+      testBtn.innerText = 'Teszt';
+      testBtn.onclick = () => {
+        funButtonsDiv.innerHTML = ''; // törli a gombokat → fehér üresség
+      }
+
+      // Hozzáadjuk a div-hez
+      funButtonsDiv.appendChild(videoBtn);
+      funButtonsDiv.appendChild(testBtn);
+    });
+  </script>
 </body>
-<button onclick="window.location.href='https://www.roblox.com/'">
-  Fun
-</button>
+</html>
