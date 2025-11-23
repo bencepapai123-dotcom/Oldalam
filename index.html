@@ -89,3 +89,113 @@ DOCTYPE html>
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oldalam</title>
+<style>
+/* Alap stílusok */
+body {
+  font-family: Arial, sans-serif;
+  margin:0;
+  padding:0;
+  background:#111;
+  color:white;
+  transition:0.3s;
+}
+
+body.light {
+  background:#f5f5f5;
+  color:#000;
+}
+
+/* Header és 3 pontos menü */
+header {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 10002; /* mindig a tetején */
+}
+
+#menuBtn {
+  background:none;
+  border:none;
+  color:inherit;
+  font-size:30px;
+  cursor:pointer;
+  padding:10px;
+  border-radius:10px;
+}
+
+#menuBox {
+  position:absolute;
+  right:0;
+  top:45px;
+  background:#222;
+  border-radius:10px;
+  padding:10px;
+  display:none;
+  width:170px;
+  z-index:10003; /* mindig menü a tetején */
+}
+
+body.light #menuBox { background:#ddd; }
+
+#menuBox button {
+  width:100%;
+  background:none;
+  border:none;
+  padding:10px;
+  font-size:16px;
+  text-align:left;
+  cursor:pointer;
+  color:inherit;
+}
+
+#menuBox button:hover { background: rgba(255,255,255,0.1); }
+
+/* Tartalom */
+.content {
+  padding:80px 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <button id="menuBtn">⋮</button>
+  <div id="menuBox">
+    <button onclick="enableDark()">Dark Mode</button>
+    <button onclick="enableLight()">Light Mode</button>
+    <button onclick="exitPage()">Exit from Web Page</button>
+  </div>
+</header>
+
+<div class="content" id="mainContent">
+  <h1>!</h1>
+  <p></p>
+</div>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const menuBox = document.getElementById('menuBox');
+let menuOpen = false;
+
+// Menü megnyitás / bezárás
+menuBtn.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  menuBox.style.display = menuOpen ? 'block' : 'none';
+});
+
+// Dark / Light mód
+function enableDark() { document.body.classList.remove('light'); }
+function enableLight() { document.body.classList.add('light'); }
+
+// Weboldal elhagyása
+function exitPage() { window.location.href='about:blank'; }
+</script>
+
+</body>
+</html>
