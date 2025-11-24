@@ -1,174 +1,138 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Az én egyszerű oldalam</title>
-</head>
-<body>
-  <h1>Üdv az oldalamon!</h1>
-  <p>Ez egy nagyon egyszerű weboldal, amit mobilról csináltam.</
-  </body
-  <h1></h1>
-
-  <p id="leiras">Leírás: Nem tom mi még a leírás mert tesztben van ;)</p>
-
-  <button onclick="alert('Szia! Ez egy működő gomb😵')">
-    Kattints rám!
-  </button>
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fun gomb példa</title>
-  
-  <style>
-    button {
-      background: linear-gradient(45deg, #000000, #111111);
-      color: white;
-      padding: 15px 32px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-      margin: 10px;
-    }
-
-    button:hover {
-      background: linear-gradient(45deg, #0a0a30, #000066);
-      transform: scale(1.05);
-    }
-
-    button:active {
-      background: linear-gradient(45deg, #000033, #000099);
-      transform: scale(1.2) translateY(-5px) rotate(-5deg);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    #fun-buttons {
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <
-  <button id="fun-btn">Fun</button>
-
-  <!-- Itt jönnek a fun gombok -->
-  <div id="fun-buttons"></div>
-
-  <script>
-    const funBtn = document.getElementById('fun-btn');
-    const funButtonsDiv = document.getElementById('fun-buttons');
-
-    funBtn.addEventListener('click', () => {
-      // Ha már létrehoztuk, ne csináljunk újat
-      if(funButtonsDiv.innerHTML !== '') return;
-
-      // Video Games gomb
-      const videoBtn = document.createElement('button');
-      videoBtn.innerText = 'Video Games';
-      videoBtn.onclick = () => {
-        window.location.href = 'https://www.roblox.com/';
-      }
-
-      // Teszt gomb
-      const testBtn = document.createElement('button');
-      testBtn.innerText = 'Vissza';
-      testBtn.onclick = () => {
-        funButtonsDiv.innerHTML = ''; // törli a gombokat → fehér üresség
-      }
-
-      // Hozzáadjuk a div-hez
-      funButtonsDiv.appendChild(videoBtn);
-      funButtonsDiv.appendChild(testBtn);
-    });
-  </script>
-</body>
-<!DOCTYPE html>
-<html lang="hu">
-<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oldalam</title>
+<title>Az én egyszerű oldalam</title>
 
 <style>
-  body {
-    font-family: Arial;
-    margin: 0;
-    padding: 0;
-    background: #111;
-    color: white;
+/* Alap body stílus */
+body {
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#111;
+    color:white;
     transition: 0.3s;
-  }
+}
 
-  /* Light mode */
-  body.light {
-    background: #f5f5f5;
-    color: #000;
-  }
+/* Light mode */
+body.light {
+    background:#f5f5f5;
+    color:#000;
+}
 
-  /* Felső menü pozíció */
-  header {
-    position: fixed;
-    top: 5px;      /* közelebb a felső szélhez */
-    right: 5px;    /* teljesen a jobb oldalhoz */
-    padding: 0;
-    z-index: 9999;
-  }
+/* Szakaszok */
+.section {
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2em;
+    transition:0.3s;
+}
 
-  /* Hárompontos gomb */
-  #menuBtn {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 30px;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 10px;
-  }
+/* Dark/light színek szakaszokhoz */
+body:not(.light) .section:nth-child(odd) { background:#111; }
+body:not(.light) .section:nth-child(even) { background:#222; }
+body.light .section:nth-child(odd) { background:#f5f5f5; }
+body.light .section:nth-child(even) { background:#e0e0e0; }
 
-  /* Menü doboz */
-  #menuBox {
-    position: absolute;
-    right: 0;
-    top: 45px;
-    background: #222;
-    border-radius: 10px;
-    padding: 10px;
-    display: none;
-    width: 170px;
-  }
-
-  body.light #menuBox {
-    background: #ddd;
-  }
-
-  #menuBox button {
-    width: 100%;
-    background: none;
-    border: none;
-    padding: 10px;
+/* Fun gomb stílus */
+button.fun-btn {
+    background: linear-gradient(45deg, #000000, #111111);
+    color: white;
+    padding: 15px 32px;
     font-size: 16px;
-    text-align: left;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
     cursor: pointer;
-    color: inherit;
-  }
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    margin: 10px;
+}
+button.fun-btn:hover {
+    background: linear-gradient(45deg, #0a0a30, #000066);
+    transform: scale(1.05);
+}
+button.fun-btn:active {
+    background: linear-gradient(45deg, #000033, #000099);
+    transform: scale(1.2) translateY(-5px) rotate(-5deg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
 
-  #menuBox button:hover {
+/* Fun gombok konténer */
+#fun-buttons {
+    margin-top:20px;
+    text-align:center;
+}
+
+/* Felső menü (három pont) */
+header {
+    position: fixed;
+    top:5px;
+    right:5px;
+    z-index:9999;
+}
+#menuBtn {
+    background:none;
+    border:none;
+    color:inherit;
+    font-size:30px;
+    cursor:pointer;
+    padding:10px;
+    border-radius:10px;
+}
+#menuBox {
+    position:absolute;
+    right:0;
+    top:45px;
+    background:#222;
+    border-radius:10px;
+    padding:10px;
+    display:none;
+    width:170px;
+}
+body.light #menuBox {
+    background:#ddd;
+}
+#menuBox button {
+    width:100%;
+    background:none;
+    border:none;
+    padding:10px;
+    font-size:16px;
+    text-align:left;
+    cursor:pointer;
+    color:inherit;
+}
+#menuBox button:hover {
     background: rgba(255,255,255,0.1);
-  }
+}
 
-  .content {
-    padding: 80px 20px;
-  }
+/* Scroll to top nyíl */
+.scroll-top-btn {
+    position: fixed;
+    bottom:25px;
+    right:25px;
+    font-size:24px;
+    border:none;
+    background:none;
+    cursor:pointer;
+    opacity:0;
+    pointer-events:none;
+    transition: opacity 0.3s ease, color 0.3s;
+}
+.scroll-top-btn.show {
+    opacity:1;
+    pointer-events:auto;
+}
+
 </style>
 </head>
 <body>
 
+<!-- Felső menü -->
 <header>
   <button id="menuBtn">⋮</button>
   <div id="menuBox">
@@ -178,188 +142,79 @@
   </div>
 </header>
 
-<div class="content">
-  <h1></h1>
-  <p> Béta verzió </p>
+<!-- Szakaszok -->
+<div class="section">1. Szakasz</div>
+<div class="section">
+    <div>
+        <p id="leiras">Leírás: Nem tom mi még a leírás mert tesztben van ;)</p>
+        <button id="fun-btn" class="fun-btn">Fun</button>
+        <div id="fun-buttons"></div>
+    </div>
+</div>
+<div class="section">3. Szakasz</div>
+<div class="section" id="section4">
+    <h2 style="font-size:2rem;">Hogy kerülsz ide? 🤨</h2>
 </div>
 
-
-<script>
-  // Menü megnyitása / bezárása
-  let menuOpen = false;
-  document.getElementById("menuBtn").onclick = () => {
-    menuOpen = !menuOpen;
-    document.getElementById("menuBox").style.display = menuOpen ? "block" : "none";
-  };
-
-  // Dark mode
-  function enableDark(){
-    document.body.classList.remove("light");
-  }
-
-  // Light mode
-  function enableLight(){
-    document.body.classList.add("light");
-  }
-
-  // Kilépés az oldalról
-  function exitPage(){
-    window.location.href = "about:blank";
-  }
-</script>
-
-</body>
-</html>
-l
-
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scroll + Dark/Light</title>
-<style>
-html {
-  scroll-behavior: smooth; /* sima görgetés */
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin:0;
-  padding:0;
-  background:#111;
-  color:white;
-  transition:0.3s;
-}
-
-body.light {
-  background:#f5f5f5;
-  color:#000;
-}
-
-.section {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
-  transition: 0.3s;
-}
-
-/* Színek a dark/light módhoz */
-body:not(.light) .section:nth-child(odd) { background:#111; }
-body:not(.light) .section:nth-child(even) { background:#222; }
-
-body.light .section:nth-child(odd) { background:#f5f5f5; }
-body.light .section:nth-child(even) { background:#e0e0e0; }
-</style>
-</head>
-<body>
-
-<div class="section">1. Szakasz</div>
-<div class="section">2. Szakasz</div>
-<div class="section">3. Szakasz</div>
-<div class="section">4. Szakasz</div>
-
-<script>
-// Példa: a dark/light mód váltása a body osztályával
-// Ezt a funkciót a későbbi menüből vagy gombból hívhatod
-function setDark() { document.body.classList.remove('light'); }
-function setLight() { document.body.classList.add('light'); }
-</script>
-
-</body>
-</html>
-<style>
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scroll To Top Minimal</title>
-<style>
-body {
-    height: 2000px; /* csak scrollhoz */
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-}
-
-/* Minimal nyíl gomb */
-.scroll-top-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    font-size: 24px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease, color 0.3s;
-}
-
-/* Mutatás görgetéskor */
-.scroll-top-btn.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-</style>
-</head>
-<body>
-
+<!-- Scroll to top -->
 <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
 
 <script>
+// Menü megnyitás
+let menuOpen=false;
+document.getElementById("menuBtn").onclick = ()=>{
+    menuOpen = !menuOpen;
+    document.getElementById("menuBox").style.display = menuOpen ? "block" : "none";
+};
+
+// Dark/Light mód
+function enableDark(){ document.body.classList.remove("light"); updateArrowColor(); }
+function enableLight(){ document.body.classList.add("light"); updateArrowColor(); }
+
+// Exit
+function exitPage(){ window.location.href="about:blank"; }
+
+// Fun gomb
+const funBtn = document.getElementById('fun-btn');
+const funButtonsDiv = document.getElementById('fun-buttons');
+funBtn.addEventListener('click', ()=>{
+    if(funButtonsDiv.innerHTML !== '') return;
+
+    const videoBtn = document.createElement('button');
+    videoBtn.innerText='Video Games';
+    videoBtn.className='fun-btn';
+    videoBtn.onclick=()=>{ window.location.href='https://www.roblox.com/'; }
+
+    const testBtn = document.createElement('button');
+    testBtn.innerText='Vissza';
+    testBtn.className='fun-btn';
+    testBtn.onclick=()=>{ funButtonsDiv.innerHTML=''; }
+
+    funButtonsDiv.appendChild(videoBtn);
+    funButtonsDiv.appendChild(testBtn);
+});
+
+// Scroll to top
 const scrollBtn = document.getElementById("scrollTopBtn");
-
-// Mutatás görgetéskor
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 180) {
-        scrollBtn.classList.add("show");
-    } else {
-        scrollBtn.classList.remove("show");
-    }
+window.addEventListener("scroll", ()=>{
+    if(window.scrollY>180){ scrollBtn.classList.add("show"); }
+    else { scrollBtn.classList.remove("show"); }
+});
+scrollBtn.addEventListener("click", ()=>{
+    window.scrollTo({top:0, behavior:'smooth'});
 });
 
-// Smooth scroll
-scrollBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Nyíl szín beállítása a tényleges dark/light módhoz
-function updateArrowColor() {
-    // Példa: ha a body háttér sötét, fehér nyíl; világos, fekete nyíl
+// Nyíl szín frissítés
+function updateArrowColor(){
     const bodyBg = window.getComputedStyle(document.body).backgroundColor;
-    // Egyszerű ellenőrzés: ha sötét a háttér (rgb 0-50), fehér; különben fekete
     const rgb = bodyBg.match(/\d+/g);
     if(rgb && parseInt(rgb[0])<100 && parseInt(rgb[1])<100 && parseInt(rgb[2])<100){
-        scrollBtn.style.color = '#fff';
-    } else {
-        scrollBtn.style.color = '#000';
-    }
+        scrollBtn.style.color='#fff';
+    } else { scrollBtn.style.color='#000'; }
 }
-
-// Frissítés induláskor
 updateArrowColor();
 
-// Frissítés, ha dark/light mód váltás történik
-// Ha van a te oldaladon dark mode gomb, akkor annak a click eseményében hívd meg updateArrowColor()
 </script>
 
 </body>
 </html>
-<!-- 4. szakasz -->
-<section id="section4" style="padding:50px; text-align:center;">
-  <h2 style="font-size:2rem; margin-bottom:20px;">Hogy kerülsz ide? 🤨</h2>
-</section>
-
-<style>
-/* Dark/light kompatibilis szín */
-body {
-    color: ; /* light mode */
-    transition: color 0.3s;
-}
-body.dark {
-    color: #fff; /* dark mode */
-}
-</style>
