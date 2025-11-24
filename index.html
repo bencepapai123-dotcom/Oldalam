@@ -13,7 +13,7 @@ body {
     padding:0;
     background:#111;
     color:white;
-    transition: 0.3s;
+    transition:0.3s;
 }
 
 /* Light mode */
@@ -25,11 +25,14 @@ body.light {
 /* Szakaszok */
 .section {
     min-height: 100vh;
+    padding: 50px 20px;
     display:flex;
-    align-items:center;
+    flex-direction:column;
     justify-content:center;
+    align-items:center;
     font-size:2em;
     transition:0.3s;
+    box-sizing: border-box;
 }
 
 /* Dark/light színek szakaszokhoz */
@@ -127,7 +130,6 @@ body.light #menuBox {
     opacity:1;
     pointer-events:auto;
 }
-
 </style>
 </head>
 <body>
@@ -144,14 +146,15 @@ body.light #menuBox {
 
 <!-- Szakaszok -->
 <div class="section">1. Szakasz</div>
+
 <div class="section">
-    <div>
-        <p id="leiras">Leírás: Nem tom mi még a leírás mert tesztben van ;)</p>
-        <button id="fun-btn" class="fun-btn">Fun</button>
-        <div id="fun-buttons"></div>
-    </div>
+    <p id="leiras">Leírás: Nem tom mi még a leírás mert tesztben van ;)</p>
+    <button id="fun-btn" class="fun-btn">Fun</button>
+    <div id="fun-buttons"></div>
 </div>
+
 <div class="section">3. Szakasz</div>
+
 <div class="section" id="section4">
     <h2 style="font-size:2rem;">Hogy kerülsz ide? 🤨</h2>
 </div>
