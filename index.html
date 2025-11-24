@@ -14,10 +14,8 @@
   }
   body.light { background:#f5f5f5; color:#000; }
 
-  /* Felső menü */
   header {
-    position: fixed; top:5px; right:5px;
-    z-index: 9999;
+    position: fixed; top:5px; right:5px; z-index: 9999;
   }
   #menuBtn {
     background:none; border:none; color:inherit;
@@ -36,7 +34,7 @@
   }
   #menuBox button:hover { background:rgba(255,255,255,0.1); }
 
-  /* Szakaszok */
+  /* Alap szakaszok */
   .section {
     height:100vh;
     display:flex; justify-content:center; align-items:center;
@@ -80,10 +78,17 @@
   </div>
 </header>
 
-<!-- Fun gomb -->
+<!-- Üdvözlés és leírás -->
 <div style="text-align:center; margin-top:80px;">
-  <button id="fun-btn" class="fun-btn">Fun</button>
-  <div id="fun-buttons"></div>
+  <h1>Üdv az oldalamon!</h1>
+  <p id="leiras">Leírás: Nem tom mi még mert csak béta verzió ;)</p>
+  <button onclick="alert('Szia! Ez egy működő gomb😵')">Kattints rám!</button>
+
+  <!-- Fun gomb és dinamikus gombok -->
+  <div style="margin-top:20px;">
+    <button id="fun-btn" class="fun-btn">Fun</button>
+    <div id="fun-buttons"></div>
+  </div>
 </div>
 
 <!-- Szakaszok -->
@@ -102,6 +107,7 @@
     menuOpen = !menuOpen;
     document.getElementById("menuBox").style.display = menuOpen ? "block" : "none";
   }
+
   function enableDark(){ document.body.classList.remove("light"); updateArrowColor(); }
   function enableLight(){ document.body.classList.add("light"); updateArrowColor(); }
   function exitPage(){ window.location.href = "about:blank"; }
@@ -144,3 +150,5 @@
 
 </body>
 </html>
+
+00.1 version
