@@ -4,89 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Az én egyszerű oldalam</title>
-
 <style>
-/* Alap body stílus */
-body {
-    font-family: Arial, sans-serif;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
     margin:0;
     padding:0;
+    font-family: Arial, sans-serif;
     background:#111;
-    color:white;
+    color:#fff;
     transition:0.3s;
-}
+  }
 
-/* Light mode */
-body.light {
+  body.light {
     background:#f5f5f5;
     color:#000;
-}
+  }
 
-/* Szakaszok */
-.section {
-    min-height: 100vh;
-    padding: 50px 20px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    font-size:2em;
-    transition:0.3s;
-    box-sizing: border-box;
-}
-
-/* Dark/light színek szakaszokhoz */
-body:not(.light) .section:nth-child(odd) { background:#111; }
-body:not(.light) .section:nth-child(even) { background:#222; }
-body.light .section:nth-child(odd) { background:#f5f5f5; }
-body.light .section:nth-child(even) { background:#e0e0e0; }
-
-/* Fun gomb stílus */
-button.fun-btn {
-    background: linear-gradient(45deg, #000000, #111111);
-    color: white;
-    padding: 15px 32px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    margin: 10px;
-}
-button.fun-btn:hover {
-    background: linear-gradient(45deg, #0a0a30, #000066);
-    transform: scale(1.05);
-}
-button.fun-btn:active {
-    background: linear-gradient(45deg, #000033, #000099);
-    transform: scale(1.2) translateY(-5px) rotate(-5deg);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-/* Fun gombok konténer */
-#fun-buttons {
-    margin-top:20px;
-    text-align:center;
-}
-
-/* Felső menü (három pont) */
-header {
+  header {
     position: fixed;
     top:5px;
     right:5px;
-    z-index:9999;
-}
-#menuBtn {
+    z-index: 9999;
+  }
+
+  #menuBtn {
     background:none;
     border:none;
     color:inherit;
     font-size:30px;
     cursor:pointer;
     padding:10px;
-    border-radius:10px;
-}
-#menuBox {
+  }
+
+  #menuBox {
     position:absolute;
     right:0;
     top:45px;
@@ -95,11 +48,13 @@ header {
     padding:10px;
     display:none;
     width:170px;
-}
-body.light #menuBox {
+  }
+
+  body.light #menuBox {
     background:#ddd;
-}
-#menuBox button {
+  }
+
+  #menuBox button {
     width:100%;
     background:none;
     border:none;
@@ -108,14 +63,55 @@ body.light #menuBox {
     text-align:left;
     cursor:pointer;
     color:inherit;
-}
-#menuBox button:hover {
-    background: rgba(255,255,255,0.1);
-}
+  }
 
-/* Scroll to top nyíl */
-.scroll-top-btn {
-    position: fixed;
+  #menuBox button:hover {
+    background:rgba(255,255,255,0.1);
+  }
+
+  .section {
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    transition:0.3s;
+  }
+
+  body:not(.light) .section:nth-child(odd) { background:#111; }
+  body:not(.light) .section:nth-child(even){ background:#222; }
+  body.light .section:nth-child(odd){ background:#f5f5f5; }
+  body.light .section:nth-child(even){ background:#e0e0e0; }
+
+  button.fun-btn {
+    background: linear-gradient(45deg,#000,#111);
+    color:white;
+    padding:15px 32px;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    margin:10px;
+    transition: all 0.3s ease;
+  }
+
+  button.fun-btn:hover {
+    background: linear-gradient(45deg,#0a0a30,#000066);
+    transform: scale(1.05);
+  }
+
+  button.fun-btn:active {
+    background: linear-gradient(45deg,#000033,#000099);
+    transform: scale(1.2) translateY(-5px) rotate(-5deg);
+  }
+
+  #fun-buttons {
+    margin-top:20px;
+    text-align:center;
+  }
+
+  .scroll-top-btn {
+    position:fixed;
     bottom:25px;
     right:25px;
     font-size:24px;
@@ -124,17 +120,17 @@ body.light #menuBox {
     cursor:pointer;
     opacity:0;
     pointer-events:none;
-    transition: opacity 0.3s ease, color 0.3s;
-}
-.scroll-top-btn.show {
+    transition: opacity 0.3s, color 0.3s;
+  }
+
+  .scroll-top-btn.show {
     opacity:1;
     pointer-events:auto;
-}
+  }
 </style>
 </head>
 <body>
 
-<!-- Felső menü -->
 <header>
   <button id="menuBtn">⋮</button>
   <div id="menuBox">
@@ -144,79 +140,68 @@ body.light #menuBox {
   </div>
 </header>
 
+<!-- FUN gomb és dinamikus gombok -->
+<div style="text-align:center; margin-top:80px;">
+  <button id="fun-btn" class="fun-btn">Fun</button>
+  <div id="fun-buttons"></div>
+</div>
+
 <!-- Szakaszok -->
 <div class="section">1. Szakasz</div>
-
-<div class="section">
-    <p id="leiras">Leírás: Nem tom mi még a leírás mert tesztben van ;)</p>
-    <button id="fun-btn" class="fun-btn">Fun</button>
-    <div id="fun-buttons"></div>
-</div>
-
+<div class="section">2. Szakasz</div>
 <div class="section">3. Szakasz</div>
-
-<div class="section" id="section4">
-    <h2 style="font-size:2rem;">Hogy kerülsz ide? 🤨</h2>
-</div>
+<div class="section">4. Szakasz<br>Hogy kerülsz ide? 🤨</div>
 
 <!-- Scroll to top -->
 <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
 
 <script>
-// Menü megnyitás
-let menuOpen=false;
-document.getElementById("menuBtn").onclick = ()=>{
+  // Menü
+  let menuOpen = false;
+  document.getElementById("menuBtn").onclick = () => {
     menuOpen = !menuOpen;
     document.getElementById("menuBox").style.display = menuOpen ? "block" : "none";
-};
+  }
 
-// Dark/Light mód
-function enableDark(){ document.body.classList.remove("light"); updateArrowColor(); }
-function enableLight(){ document.body.classList.add("light"); updateArrowColor(); }
+  function enableDark(){ document.body.classList.remove("light"); updateArrowColor(); }
+  function enableLight(){ document.body.classList.add("light"); updateArrowColor(); }
+  function exitPage(){ window.location.href = "about:blank"; }
 
-// Exit
-function exitPage(){ window.location.href="about:blank"; }
-
-// Fun gomb
-const funBtn = document.getElementById('fun-btn');
-const funButtonsDiv = document.getElementById('fun-buttons');
-funBtn.addEventListener('click', ()=>{
+  // Fun gomb
+  const funBtn = document.getElementById('fun-btn');
+  const funButtonsDiv = document.getElementById('fun-buttons');
+  funBtn.addEventListener('click', () => {
     if(funButtonsDiv.innerHTML !== '') return;
-
     const videoBtn = document.createElement('button');
-    videoBtn.innerText='Video Games';
-    videoBtn.className='fun-btn';
-    videoBtn.onclick=()=>{ window.location.href='https://www.roblox.com/'; }
+    videoBtn.className = 'fun-btn';
+    videoBtn.innerText = 'Video Games';
+    videoBtn.onclick = () => { window.location.href='https://www.roblox.com/'; }
 
     const testBtn = document.createElement('button');
-    testBtn.innerText='Vissza';
-    testBtn.className='fun-btn';
-    testBtn.onclick=()=>{ funButtonsDiv.innerHTML=''; }
+    testBtn.className = 'fun-btn';
+    testBtn.innerText = 'Vissza';
+    testBtn.onclick = () => { funButtonsDiv.innerHTML=''; }
 
     funButtonsDiv.appendChild(videoBtn);
     funButtonsDiv.appendChild(testBtn);
-});
+  });
 
-// Scroll to top
-const scrollBtn = document.getElementById("scrollTopBtn");
-window.addEventListener("scroll", ()=>{
-    if(window.scrollY>180){ scrollBtn.classList.add("show"); }
-    else { scrollBtn.classList.remove("show"); }
-});
-scrollBtn.addEventListener("click", ()=>{
-    window.scrollTo({top:0, behavior:'smooth'});
-});
+  // Scroll to top
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  window.addEventListener("scroll", () => {
+    if(window.scrollY>180) scrollBtn.classList.add("show");
+    else scrollBtn.classList.remove("show");
+  });
+  scrollBtn.addEventListener("click", ()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
 
-// Nyíl szín frissítés
-function updateArrowColor(){
+  function updateArrowColor() {
     const bodyBg = window.getComputedStyle(document.body).backgroundColor;
     const rgb = bodyBg.match(/\d+/g);
-    if(rgb && parseInt(rgb[0])<100 && parseInt(rgb[1])<100 && parseInt(rgb[2])<100){
-        scrollBtn.style.color='#fff';
-    } else { scrollBtn.style.color='#000'; }
-}
-updateArrowColor();
+    if(rgb && parseInt(rgb[0])<100 && parseInt(rgb[1])<100 && parseInt(rgb[2])<100) scrollBtn.style.color='#fff';
+    else scrollBtn.style.color='#000';
+  }
 
+  updateArrowColor();
 </script>
 
 </body>
